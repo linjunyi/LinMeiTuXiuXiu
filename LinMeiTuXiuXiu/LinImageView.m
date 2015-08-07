@@ -11,9 +11,17 @@
 @implementation LinImageView
 
 @synthesize imageName;
+@synthesize imageUrl;
 
 - (void)drawRect:(CGRect)rect {
   
+}
+
+- (void)initWithImageView:(UIImageView *)imageView andImageName:(NSString *)name{
+    if(self) {
+        self.image = imageView.image;
+        self.imageName = name;
+    }
 }
 
 @end

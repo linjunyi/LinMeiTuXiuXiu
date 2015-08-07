@@ -11,5 +11,8 @@
 @interface LinImageView : UIImageView
 
 @property NSString *imageName;
+@property NSString *imageUrl;
+
+- (void)initWithImageView:(UIImageView *)imageView andImageName:(NSString *)name;
 
 @end

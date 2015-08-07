@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E1E4F341B74E52B00C34E20 /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E1E4F331B74E52B00C34E20 /* camera.png */; };
 		3E5CE6801B74A9FC0038E0B2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E5CE67F1B74A9FC0038E0B2 /* main.m */; };
 		3E5CE6831B74A9FC0038E0B2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E5CE6821B74A9FC0038E0B2 /* AppDelegate.m */; };
 		3E5CE6861B74A9FC0038E0B2 /* LinMeiTuXiuXiu.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3E5CE6841B74A9FC0038E0B2 /* LinMeiTuXiuXiu.xcdatamodeld */; };
@@ -33,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3E1E4F331B74E52B00C34E20 /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
 		3E5CE67A1B74A9FC0038E0B2 /* LinMeiTuXiuXiu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LinMeiTuXiuXiu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E5CE67E1B74A9FC0038E0B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E5CE67F1B74A9FC0038E0B2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				3E5CE6A91B74B0ED0038E0B2 /* 悠哉2.jpg */,
 				3E5CE6AA1B74B0ED0038E0B2 /* 悠哉3.jpg */,
 				3E5CE6AB1B74B0ED0038E0B2 /* 悠哉4.jpg */,
+				3E1E4F331B74E52B00C34E20 /* camera.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 				3E5CE6911B74A9FC0038E0B2 /* LaunchScreen.xib in Resources */,
 				3E5CE6AF1B74B0ED0038E0B2 /* 悠哉4.jpg in Resources */,
 				3E5CE6AD1B74B0ED0038E0B2 /* 悠哉2.jpg in Resources */,
+				3E1E4F341B74E52B00C34E20 /* camera.png in Resources */,
 				3E5CE68E1B74A9FC0038E0B2 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -467,6 +471,7 @@
 				3E5CE6A21B74A9FC0038E0B2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3E5CE6A31B74A9FC0038E0B2 /* Build configuration list for PBXNativeTarget "LinMeiTuXiuXiuTests" */ = {
 			isa = XCConfigurationList;
@@ -475,6 +480,7 @@
 				3E5CE6A51B74A9FC0038E0B2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
