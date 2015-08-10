@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E1E06081B78D68600DA5D0E /* LinAnimationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E1E06071B78D68600DA5D0E /* LinAnimationViewController.m */; };
+		3E1E06181B78F31B00DA5D0E /* menu_hl.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E1E06171B78F31B00DA5D0E /* menu_hl.png */; };
+		3E1E061A1B78F38200DA5D0E /* menu_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E1E06191B78F38200DA5D0E /* menu_normal@2x.png */; };
 		3E1E4F341B74E52B00C34E20 /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E1E4F331B74E52B00C34E20 /* camera.png */; };
+		3E5310721B75EAFA00951B80 /* delete_fork.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E5310711B75EAFA00951B80 /* delete_fork.png */; };
 		3E5CE6801B74A9FC0038E0B2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E5CE67F1B74A9FC0038E0B2 /* main.m */; };
 		3E5CE6831B74A9FC0038E0B2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E5CE6821B74A9FC0038E0B2 /* AppDelegate.m */; };
 		3E5CE6861B74A9FC0038E0B2 /* LinMeiTuXiuXiu.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3E5CE6841B74A9FC0038E0B2 /* LinMeiTuXiuXiu.xcdatamodeld */; };
@@ -34,7 +38,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3E1E06061B78D68600DA5D0E /* LinAnimationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinAnimationViewController.h; sourceTree = "<group>"; };
+		3E1E06071B78D68600DA5D0E /* LinAnimationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinAnimationViewController.m; sourceTree = "<group>"; };
+		3E1E06171B78F31B00DA5D0E /* menu_hl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_hl.png; sourceTree = "<group>"; };
+		3E1E06191B78F38200DA5D0E /* menu_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_normal@2x.png"; sourceTree = "<group>"; };
 		3E1E4F331B74E52B00C34E20 /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
+		3E5310711B75EAFA00951B80 /* delete_fork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete_fork.png; sourceTree = "<group>"; };
 		3E5CE67A1B74A9FC0038E0B2 /* LinMeiTuXiuXiu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LinMeiTuXiuXiu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E5CE67E1B74A9FC0038E0B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E5CE67F1B74A9FC0038E0B2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -102,6 +111,8 @@
 				3E5CE6881B74A9FC0038E0B2 /* ViewController.m */,
 				3E5CE6B01B74B85A0038E0B2 /* LinImageView.h */,
 				3E5CE6B11B74B85A0038E0B2 /* LinImageView.m */,
+				3E1E06061B78D68600DA5D0E /* LinAnimationViewController.h */,
+				3E1E06071B78D68600DA5D0E /* LinAnimationViewController.m */,
 				3E5CE68A1B74A9FC0038E0B2 /* Main.storyboard */,
 				3E5CE68D1B74A9FC0038E0B2 /* Images.xcassets */,
 				3E5CE68F1B74A9FC0038E0B2 /* LaunchScreen.xib */,
@@ -154,6 +165,9 @@
 				3E5CE6AA1B74B0ED0038E0B2 /* 悠哉3.jpg */,
 				3E5CE6AB1B74B0ED0038E0B2 /* 悠哉4.jpg */,
 				3E1E4F331B74E52B00C34E20 /* camera.png */,
+				3E5310711B75EAFA00951B80 /* delete_fork.png */,
+				3E1E06171B78F31B00DA5D0E /* menu_hl.png */,
+				3E1E06191B78F38200DA5D0E /* menu_normal@2x.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -240,11 +254,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E5CE6AE1B74B0ED0038E0B2 /* 悠哉3.jpg in Resources */,
+				3E5310721B75EAFA00951B80 /* delete_fork.png in Resources */,
 				3E5CE6AC1B74B0ED0038E0B2 /* 悠哉1.jpg in Resources */,
 				3E5CE68C1B74A9FC0038E0B2 /* Main.storyboard in Resources */,
 				3E5CE6911B74A9FC0038E0B2 /* LaunchScreen.xib in Resources */,
 				3E5CE6AF1B74B0ED0038E0B2 /* 悠哉4.jpg in Resources */,
 				3E5CE6AD1B74B0ED0038E0B2 /* 悠哉2.jpg in Resources */,
+				3E1E06181B78F31B00DA5D0E /* menu_hl.png in Resources */,
+				3E1E061A1B78F38200DA5D0E /* menu_normal@2x.png in Resources */,
 				3E1E4F341B74E52B00C34E20 /* camera.png in Resources */,
 				3E5CE68E1B74A9FC0038E0B2 /* Images.xcassets in Resources */,
 			);
@@ -265,6 +282,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E5CE6861B74A9FC0038E0B2 /* LinMeiTuXiuXiu.xcdatamodeld in Sources */,
+				3E1E06081B78D68600DA5D0E /* LinAnimationViewController.m in Sources */,
 				3E5CE6B21B74B85A0038E0B2 /* LinImageView.m in Sources */,
 				3E5CE6831B74A9FC0038E0B2 /* AppDelegate.m in Sources */,
 				3E5CE6891B74A9FC0038E0B2 /* ViewController.m in Sources */,

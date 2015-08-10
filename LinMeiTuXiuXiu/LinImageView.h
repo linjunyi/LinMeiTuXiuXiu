@@ -8,11 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol LinImageViewDelegate<NSObject>
+
+- (void)deleteBtnClicked;
+
+@end
+
 @interface LinImageView : UIImageView
 
-@property NSString *imageName;
-@property NSString *imageUrl;
-
-- (void)initWithImageView:(UIImageView *)imageView andImageName:(NSString *)name;
+@property (nonatomic, strong) NSString *imageName;
+@property (nonatomic, strong) UIButton *deleteBtn;
+@property (nonatomic, strong) id<LinImageViewDelegate> delegate;
 
 @end

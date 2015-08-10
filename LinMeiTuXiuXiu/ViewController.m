@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "LinImageView.h"
+#import "LinAnimationViewController.h"
 
 
 @interface ViewController ()
@@ -17,6 +18,8 @@
 @property (nonatomic, strong) UIButton *imagePickerBtn;
 @property (nonatomic, strong) NSMutableArray *allImageNames;
 @property (nonatomic, strong) NSMutableArray *allImageArray;
+@property (nonatomic, strong) UITapGestureRecognizer *tapGesture;
+@property (nonatomic, assign) BOOL isShowMenu;
 
 @end
 
@@ -27,10 +30,13 @@
 @synthesize imagePickerBtn;
 @synthesize allImageNames;
 @synthesize allImageArray;
+@synthesize tapGesture;
+@synthesize isShowMenu;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self createMainView];
+    tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapWhenShowMenu:)];
 }
 
 - (void)createMainView {
@@ -57,28 +63,27 @@
     if (allImageNames == nil || allImageNames.count == 0) {
         allImageNames = [NSMutableArray array];
         for (NSInteger i=0; i<4; i++) {
-            [allImageNames addObject:[NSString stringWithFormat:@"悠哉%ld.jpg", i+1]];
+            [allImageNames addObject:[NSString stringWithFormat:@"悠哉%ld.jpg", (long)(i+1)]];
         }
     }
     NSInteger photoNum;
     for (photoNum = 0; photoNum < allImageNames.count; photoNum++) {
         LinImageView *imageView = [[LinImageView alloc] initWithFrame:CGRectMake(100 * photoNum + 2, 7.5, 93, 85)];
         imageView.userInteractionEnabled = YES;
-        UIGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageViewClicked:)];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageViewClicked:)];
         [imageView addGestureRecognizer:tap];
+        UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(imageViewLongPress:)];
+        longPress.minimumPressDuration = 1.4f;
+        [imageView addGestureRecognizer:longPress];
         imageView.imageName = allImageNames[photoNum];
-        NSLog(@"%@", imageView.imageName);
         UIImage *image = [UIImage imageNamed:imageView.imageName];
         if(image == nil) {
-            NSLog(@"******");
             image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/%@", imagesDic, imageView.imageName]];
-            NSLog(@"%@", [NSString stringWithFormat:@"%@/%@", imagesDic, imageView.imageName]);
         }
         imageView.image = image;
         [allImageArray addObject:imageView];
         [picLibrary addSubview:imageView];
     }
-    NSLog(@"%ld",allImageArray.count);
     
     showImageView = [[LinImageView alloc] initWithFrame:CGRectMake(25, picLibrary.frame.origin.y + picLibrary.frame.size.height + 25, self.view.frame.size.width - 50, 250)];
     showImageView.backgroundColor = [UIColor clearColor];
@@ -93,11 +98,19 @@
     CGFloat contentWidth = photoNum * 93 > self.view.frame.size.width? photoNum * 93 + 30 : self.view.frame.size.width + 30;
     picLibrary.contentSize = CGSizeMake(contentWidth, 0);
     
+    UIButton *menuButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 25)];
+    menuButton.center = CGPointMake(30, 28.5);
+    menuButton.alpha = 0.5;
+    [menuButton setImage:[UIImage imageNamed:@"menu_normal.png"] forState:UIControlStateNormal];
+    [menuButton setImage:[UIImage imageNamed:@"menu_hl.png"] forState:UIControlStateHighlighted];
+    [menuButton addTarget:self action:@selector(menuButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+    
     [defaultUser setObject:allImageNames forKey:@"kAllImageNames"];
     [self.view addSubview:titleLabel];
     [self.view addSubview:imagePickerBtn];
     [self.view addSubview:picLibrary];
     [self.view addSubview:showImageView];
+    [self.view addSubview:menuButton];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -111,6 +124,31 @@
     [userDefaults setObject:imageView.imageName forKey:@"kDefaultImage"];
     self.showImageView.image = imageView.image;
     [self addButtonToView];
+}
+
+- (void)menuButtonClicked {
+    if (isShowMenu == NO) {
+        isShowMenu = YES;
+        NSArray *menuArray = @[@"1", @"2", @"3", @"4", @"5"];
+        CGRect frame = CGRectMake(10, 37, self.view.frame.size.width - 30, self.view.frame.size.height - 210);
+        LinAnimationViewController *linController = [[LinAnimationViewController alloc] initWithFrame:frame data:menuArray];
+        linController.view.tag = 1010;
+        [self.view addSubview:linController.view];
+        [self.view addGestureRecognizer:tapGesture];
+    }else {
+        UIView *view = [self.view viewWithTag:1010];
+        [view removeFromSuperview];
+        isShowMenu = NO;
+    }
+}
+
+- (void)imageViewLongPress:(UILongPressGestureRecognizer *)longPress {
+    NSLog(@"长按");
+}
+
+- (void)tapWhenShowMenu:(UITapGestureRecognizer *)tap {
+    UIView *view = [self.view viewWithTag:1010];
+    [view removeFromSuperview];
 }
 
 - (void)addButtonToView {
@@ -206,6 +244,9 @@
     imageView.userInteractionEnabled = YES;
     UIGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageViewClicked:)];
     [imageView addGestureRecognizer:tap];
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(imageViewLongPress:)];
+    longPress.minimumPressDuration = 1.4f;
+    [imageView addGestureRecognizer:longPress];
     imageView.imageName = imageName;
     imageView.image = image;
     [allImageNames addObject:imageView.imageName];
@@ -218,7 +259,7 @@
     NSString *imagesDic = [NSString stringWithFormat:@"%@/Images", docDir];
     NSFileManager *fm = [NSFileManager defaultManager];
     if (![fm fileExistsAtPath:imagesDic]) {
-        [fm createDirectoryAtPath:imagesDic withIntermediateDirectories:nil attributes:nil error:nil];
+        [fm createDirectoryAtPath:imagesDic withIntermediateDirectories:NO attributes:nil error:nil];
     }
     NSString *imagePath = [NSString stringWithFormat:@"%@/%@", imagesDic, imageView.imageName];
     NSData *imageData = UIImageJPEGRepresentation(image, 1);
