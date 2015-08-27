@@ -24,6 +24,7 @@
     if (self) {
         self.view.frame = frame;
         self.view.layer.cornerRadius = 50;
+        self.btnArray = [NSMutableArray array];
         CGFloat rotateAngle = 2 * M_PI / data.count;
         for (NSInteger i = 0; i < data.count; i++) {
             NSString *text = data[i];
@@ -42,11 +43,29 @@
             CATransform3D transform = CATransform3DIdentity;
             transform = CATransform3DScale(transform, scaleValue, scaleValue, 1);
             item.layer.transform = transform;
+            item.delegate = self;
             [self.view addSubview:item];
+            [self.btnArray addObject:item];
         }
         self.view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
     }
     return self;
+}
+
+- (void)move:(LinAnimationItem *)item {
+    if ([item.titleLabel.text isEqualToString:@"灰化图"]) {
+        if ([self.delegate respondsToSelector:@selector(grayImage:)]) {
+            [self.delegate grayImage:nil];
+        }
+    }else if([item.titleLabel.text isEqualToString:@"图像切割"]) {
+        if([self.delegate respondsToSelector:@selector(cutImage:)]) {
+            [self.delegate cutImage:nil];
+        }
+    }
+}
+
+- (void)click:(LinAnimationItem *)item {
+    [self move:item];
 }
 
 
@@ -58,15 +77,20 @@
 - (instancetype)initWithFrame:(CGRect)frame text:(NSString *)text {
     if (self) {
         self = [super initWithFrame:frame];
-        self.textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height/3)];
-        self.textLabel.text = text;
-        self.textLabel.textAlignment = NSTextAlignmentCenter;
-        self.textLabel.center = CGPointMake(self.center.x, self.center.y);
         self.backgroundColor = [UIColor whiteColor];
         self.layer.cornerRadius = 30;
-        [self addSubview:self.textLabel];
+        [self setTitle:text forState:UIControlStateNormal];
+        [self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [self setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
+        [self addTarget:self action:@selector(click) forControlEvents:UIControlEventTouchUpInside];
     }
     return self;
+}
+
+- (void)click {
+    if([self.delegate respondsToSelector:@selector(click:)]) {
+        [self.delegate click:self];
+    }
 }
 
 @end

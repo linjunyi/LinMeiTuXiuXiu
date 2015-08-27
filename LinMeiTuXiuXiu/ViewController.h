@@ -7,9 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-//#import ""
 
-@interface ViewController : UIViewController <UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@protocol ImageProcessingDelegate <NSObject>
+
+- (void)grayImage:(UIImage *)image;
+- (void)cutImage:(UIImage *)image;
+
+@end
+
+@interface ViewController : UIViewController < UIImagePickerControllerDelegate,
+                                               UINavigationControllerDelegate,
+                                               ImageProcessingDelegate >
 
 
 @end

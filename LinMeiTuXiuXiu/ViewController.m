@@ -10,6 +10,10 @@
 #import "LinImageView.h"
 #import "LinAnimationViewController.h"
 
+#define r(x) ( (int)x & 0xff)
+#define g(x) ( (int)(x >> 8)  & 0xff )
+#define b(x) ( (int)(x >> 16) & 0xff )
+#define a(x) ( (int)(x >> 24) & 0xff )
 
 @interface ViewController ()
 
@@ -129,10 +133,11 @@
 - (void)menuButtonClicked {
     if (isShowMenu == NO) {
         isShowMenu = YES;
-        NSArray *menuArray = @[@"1", @"2", @"3", @"4", @"5"];
+        NSArray *menuArray = @[@"灰化图", @"图像切割", @"3", @"4", @"原图"];
         CGRect frame = CGRectMake(10, 37, self.view.frame.size.width - 30, self.view.frame.size.height - 210);
         LinAnimationViewController *linController = [[LinAnimationViewController alloc] initWithFrame:frame data:menuArray];
         linController.view.tag = 1010;
+        linController.delegate = self;
         [self.view addSubview:linController.view];
         [self.view addGestureRecognizer:tapGesture];
     }else {
@@ -266,6 +271,117 @@
     [fm createFileAtPath:imagePath contents:imageData attributes:nil];
     [self addButtonToView];
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark ImageProcessingDelegate
+
+- (void)grayImage:(UIImage *)image {
+    if (image == nil) {
+        image = showImageView.image;
+    }
+    
+    int bitmapInfo = kCGImageAlphaNone;
+    int width = image.size.width;
+    int height = image.size.height;
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceGray();
+    CGContextRef context = CGBitmapContextCreate (nil,
+                                                  width,
+                                                  height,
+                                                  8,      // bits per component
+                                                  0,
+                                                  colorSpace,
+                                                  bitmapInfo);
+    CGColorSpaceRelease(colorSpace);
+    if (context == NULL) {
+        return;
+    }
+    CGContextDrawImage(context,
+                       CGRectMake(0, 0, width, height), image.CGImage);
+    UIImage *grayImage = [UIImage imageWithCGImage:CGBitmapContextCreateImage(context)];
+    CGColorSpaceRelease(colorSpace);
+    CGContextRelease(context);
+    self.showImageView.image = grayImage;
+}
+
+
+
+- (void)cutImage:(UIImage *)image {
+    if (image == nil) {
+        image = showImageView.image;
+    }
+    NSUInteger bitsPerComponent = 8;
+    NSUInteger bytesPerPixel = 4;
+    CGColorSpaceRef colorRef = CGColorSpaceCreateDeviceRGB();
+    void *imageData = (void *) calloc(image.size.width * image.size.height, 4);
+    CGContextRef context = CGBitmapContextCreate(imageData,
+                                                 image.size.width,
+                                                 image.size.height,
+                                                 bitsPerComponent,
+                                                 bytesPerPixel * image.size.width,
+                                                 colorRef,
+                                                 kCGImageAlphaPremultipliedLast |     kCGBitmapByteOrder32Big);
+    CGContextDrawImage(context, CGRectMake(0, 0,image.size.width, image.size.height), image.CGImage);
+    int *pixelsData = (int *)imageData;
+    int pixelsNum = image.size.width * image.size.height;
+    double averageGrayValue = 0.0;
+    double maxVariance = -1;
+    double grayValue = 0;
+    for (NSInteger i = 0; i < pixelsNum; i++) {
+        int color = *pixelsData;
+        int newPixel = (r(color) + g(color) + b(color))/3;
+        color = (color & 0xff000000) + (newPixel + (newPixel << 8) + (newPixel << 16));
+        *pixelsData = color;
+        averageGrayValue += (double)(newPixel) / pixelsNum;
+        pixelsData ++ ;
+    }
+    for (NSInteger i = 0; i < 256; i += 11) {
+        int *pixelsData = (int *)imageData;
+        double targetAveGary = 0.0;
+        double targetPixelNum = 0;
+        double bgAveGary = 0.0;
+        double bgPixelNum = 0;
+        for (NSInteger j = 0; j < pixelsNum; j++) {
+            int color = *pixelsData;
+            int newPixel = (r(color) + g(color) + b(color))/3;
+            if (newPixel < i) {
+                targetAveGary += newPixel;
+                targetPixelNum ++;
+            }else {
+                bgAveGary += newPixel;
+                bgPixelNum ++;
+            }
+            pixelsData ++;
+        }
+        targetAveGary /= targetPixelNum;
+        bgAveGary /= bgPixelNum;
+        double variance = (targetPixelNum/pixelsNum) * pow((targetAveGary - averageGrayValue), 2) + (bgAveGary/pixelsNum) * pow((bgAveGary - averageGrayValue), 2);
+        if (variance > maxVariance) {
+            maxVariance = variance;
+            grayValue = i;
+        }
+    }
+    pixelsData = (int *)imageData;
+    for (NSInteger i = 0; i < pixelsNum; i++) {
+        int color = *pixelsData;
+        int newPixel = (r(color) + g(color) + b(color))/3;
+        if (newPixel > grayValue) {
+            if (newPixel < 3 * grayValue / 2) {
+                newPixel = 175;
+            }else {
+                newPixel = 245;
+            }
+        }else {
+            newPixel = 30;
+        }
+        color = (color & 0xff000000) + (newPixel + (newPixel << 8) + (newPixel << 16));
+        *pixelsData = color;
+        pixelsData ++ ;
+    }
+    
+    UIImage *cutImage = [UIImage imageWithCGImage:CGBitmapContextCreateImage(context)];
+    CGColorSpaceRelease(colorRef);
+    CGContextRelease(context);
+    self.showImageView.image = cutImage;
 }
 
 #pragma mark - 隐藏状态栏

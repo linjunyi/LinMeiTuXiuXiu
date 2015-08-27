@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ViewController.h"
 
 @interface LinAnimationViewController : UIViewController
+
+@property (nonatomic, strong) id<ImageProcessingDelegate> delegate;
+@property (nonatomic, strong) NSMutableArray *btnArray;
 
 - (instancetype)initWithFrame:(CGRect)frame data:(NSArray *)data;
 
@@ -16,7 +20,7 @@
 
 @interface LinAnimationItem : UIButton
 
-@property (nonatomic, strong) UILabel *textLabel;
+@property (nonatomic, strong) id delegate;
 
 - (instancetype)initWithFrame:(CGRect)frame text:(NSString *)text;
 
