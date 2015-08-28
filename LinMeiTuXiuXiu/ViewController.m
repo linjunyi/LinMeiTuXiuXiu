@@ -134,7 +134,7 @@
     if (isShowMenu == NO) {
         isShowMenu = YES;
         NSArray *menuArray = @[@"灰化图", @"图像切割", @"3", @"4", @"原图"];
-        CGRect frame = CGRectMake(10, 37, self.view.frame.size.width - 30, self.view.frame.size.height - 210);
+        CGRect frame = CGRectMake(10, 37, self.view.frame.size.width - 20, self.view.frame.size.height - 210);
         LinAnimationViewController *linController = [[LinAnimationViewController alloc] initWithFrame:frame data:menuArray];
         linController.view.tag = 1010;
         linController.delegate = self;

@@ -8,38 +8,37 @@
 
 #import "LinAnimationViewController.h"
 
-#define Radius 100 //半径
+#define Radius 90 //半径
+#define ScaleFactor 0.8
+#define CircleCenterX (self.view.center.x - 20)
+#define CircleCenterY (self.view.center.y - 40)
+#define DurationTime 1.2f
 
 @implementation LinAnimationViewController
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 
 - (instancetype)initWithFrame:(CGRect)frame data:(NSArray *)data {
     if (self) {
         self.view.frame = frame;
         self.view.layer.cornerRadius = 50;
         self.btnArray = [NSMutableArray array];
-        CGFloat rotateAngle = 2 * M_PI / data.count;
+        _rotateAngle = 2 * M_PI / data.count;
+        _deltaAngel = _rotateAngle;
+        _currentIndex = data.count - 1;
         for (NSInteger i = 0; i < data.count; i++) {
             NSString *text = data[i];
-            LinAnimationItem *item = [[LinAnimationItem alloc] initWithFrame:CGRectMake(0, 0, 80, 80) text:text];
-            CGFloat centerX = self.view.center.x - 10 - Radius * cos(i * rotateAngle);
-            CGFloat centerY = self.view.center.y - 70 - Radius * sin(i * rotateAngle);
+            LinAnimationItem *item = [[LinAnimationItem alloc] initWithFrame:CGRectMake(0, 0, 90, 90) text:text tag:i];
+            CGFloat centerX = CircleCenterX + Radius * cos((i + 2) * _rotateAngle);
+            CGFloat centerY = CircleCenterY + Radius * sin((i + 2) * _rotateAngle);
             item.center = CGPointMake(centerX, centerY);
+            item.currentAngle = (i + 2) * _rotateAngle;
             CGFloat scaleValue;
             NSInteger num;
             if (i < data.count/2) {
                 num = i + 1;
             }else {
-                num = data.count - i -1;
+                num = data.count - i - 1;
             }
-            scaleValue = pow(0.85, num);
+            scaleValue = pow(ScaleFactor, num);
             CATransform3D transform = CATransform3DIdentity;
             transform = CATransform3DScale(transform, scaleValue, scaleValue, 1);
             item.layer.transform = transform;
@@ -52,7 +51,23 @@
     return self;
 }
 
-- (void)move:(LinAnimationItem *)item {
+- (void)selectItem:(LinAnimationItem *)item {
+    if (item.tag == _currentIndex) {
+        return;
+    }
+    NSInteger tmpIndex = item.tag > _currentIndex ? _currentIndex + 5 : _currentIndex;
+    _deltaAngel = fabsf(item.tag - (float)tmpIndex) * _rotateAngle;
+    self.view.superview.userInteractionEnabled = NO;
+    for (NSInteger i = 0; i < self.btnArray.count; i++) {
+        LinAnimationItem *animationItem = (LinAnimationItem *)[self.view viewWithTag:i];
+        [animationItem.layer addAnimation:[self moveAnimation:animationItem] forKey:@"position"];
+        [animationItem.layer addAnimation:[self scaleAnimation:animationItem] forKey:@"transform.scale"];
+    }
+    CGFloat duration = DurationTime * ((NSInteger)(_deltaAngel / _rotateAngle))/ self.btnArray.count;
+    NSTimer *timer = [NSTimer timerWithTimeInterval:duration target:self selector:@selector(setItemClickEnabled) userInfo:nil repeats:NO];
+    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
+    _currentIndex = item.tag;
+    /*
     if ([item.titleLabel.text isEqualToString:@"灰化图"]) {
         if ([self.delegate respondsToSelector:@selector(grayImage:)]) {
             [self.delegate grayImage:nil];
@@ -61,11 +76,55 @@
         if([self.delegate respondsToSelector:@selector(cutImage:)]) {
             [self.delegate cutImage:nil];
         }
+    }*/
+}
+
+- (void)setItemClickEnabled {
+    self.view.superview.userInteractionEnabled = YES;
+}
+
+- (CAAnimation *)moveAnimation:(LinAnimationItem *)item {
+    CAKeyframeAnimation *animation = [CAKeyframeAnimation animation];
+    CGMutablePathRef path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, nil, item.center.x, item.center.y);
+    CGFloat beginAngle = item.currentAngle;
+    CGFloat endAngle = item.currentAngle + _deltaAngel;
+    CGPathAddArc(path, nil, CircleCenterX, CircleCenterY, Radius, beginAngle, endAngle, NO);
+    item.currentAngle = endAngle;
+    CGFloat centerX = CircleCenterX + Radius * cos(endAngle);
+    CGFloat centerY = CircleCenterY + Radius * sin(endAngle);
+    item.center = CGPointMake(centerX, centerY);
+    animation.path = path;
+    CGPathRelease(path);
+    animation.duration = DurationTime * ((NSInteger)(_deltaAngel / _rotateAngle))/ self.btnArray.count;
+    animation.repeatCount = 1;
+    animation.removedOnCompletion = NO;
+    animation.fillMode = kCAFillModeForwards;
+    animation.calculationMode = @"paced";
+    return animation;
+}
+
+- (CAAnimation *)scaleAnimation:(LinAnimationItem *)item {
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    animation.fromValue = @(item.layer.transform.m11);
+    NSInteger tmpTag = ((NSInteger)(_deltaAngel / _rotateAngle) + item.tag + (self.btnArray.count - 1 - _currentIndex)) % 5;
+    NSInteger scaleNum = 0;
+    if (tmpTag < self.btnArray.count/2) {
+        scaleNum = tmpTag + 1;
+    }else {
+        scaleNum = self.btnArray.count - tmpTag - 1;
     }
+    
+    animation.toValue = @(pow(ScaleFactor, scaleNum));
+    animation.duration = DurationTime * ((NSInteger)(_deltaAngel / _rotateAngle))/ self.btnArray.count;
+    animation.repeatCount = 1;
+    animation.removedOnCompletion = NO;
+    animation.fillMode = kCAFillModeForwards;
+    return animation;
 }
 
 - (void)click:(LinAnimationItem *)item {
-    [self move:item];
+    [self selectItem:item];
 }
 
 
@@ -74,11 +133,13 @@
 
 @implementation LinAnimationItem
 
-- (instancetype)initWithFrame:(CGRect)frame text:(NSString *)text {
+- (instancetype)initWithFrame:(CGRect)frame text:(NSString *)text tag:(NSInteger)tag{
     if (self) {
         self = [super initWithFrame:frame];
         self.backgroundColor = [UIColor whiteColor];
         self.layer.cornerRadius = 30;
+        self.currentAngle = 0.0;
+        self.tag = tag;
         [self setTitle:text forState:UIControlStateNormal];
         [self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [self setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
