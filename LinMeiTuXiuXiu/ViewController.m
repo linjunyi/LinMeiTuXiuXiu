@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "LinImageView.h"
 #import "LinAnimationViewController.h"
+#import "LinBlowUpViewController.h"
 
 #define r(x) ( (int)x & 0xff)
 #define g(x) ( (int)(x >> 8)  & 0xff )
@@ -133,7 +134,7 @@
 - (void)menuButtonClicked {
     if (isShowMenu == NO) {
         isShowMenu = YES;
-        NSArray *menuArray = @[@"灰化图", @"图像切割", @"3", @"4", @"原图"];
+        NSArray *menuArray = @[@"灰化图", @"图像切割", @"放大镜", @"4", @"原图"];
         CGRect frame = CGRectMake(10, 37, self.view.frame.size.width - 20, self.view.frame.size.height - 210);
         LinAnimationViewController *linController = [[LinAnimationViewController alloc] initWithFrame:frame data:menuArray];
         linController.view.tag = 1010;
@@ -275,7 +276,12 @@
 
 #pragma mark ImageProcessingDelegate
 
+- (void)originImage:(UIImage *)image {
+    
+}
+
 - (void)grayImage:(UIImage *)image {
+    
     if (image == nil) {
         image = showImageView.image;
     }
@@ -303,9 +309,7 @@
     self.showImageView.image = grayImage;
 }
 
-
-
-- (void)cutImage:(UIImage *)image {
+- (void)cutImage:(UIImage *)image{
     if (image == nil) {
         image = showImageView.image;
     }
@@ -377,11 +381,37 @@
         *pixelsData = color;
         pixelsData ++ ;
     }
-    
     UIImage *cutImage = [UIImage imageWithCGImage:CGBitmapContextCreateImage(context)];
     CGColorSpaceRelease(colorRef);
     CGContextRelease(context);
     self.showImageView.image = cutImage;
+}
+
+- (void)expandImage:(UIImage *)image {
+    UIView *view = [self.view viewWithTag:1010];
+    [view removeFromSuperview];
+    LinImageView *animationImgView = [[LinImageView alloc] init];
+    animationImgView.image = self.showImageView.image;
+    animationImgView.frame = self.showImageView.frame;
+    UIView *animationBgView = [[UIView alloc] initWithFrame:self.view.frame];
+    animationBgView.backgroundColor = [UIColor blackColor];
+    animationBgView.alpha = 0.0;
+    [self.view addSubview:animationBgView];
+    [self.view addSubview:animationImgView];
+    self.showImageView.hidden = YES;
+    CGRect frame = animationImgView.frame;
+    frame.origin.x = 0;
+    frame.origin.y = 50;
+    frame.size.width = self.view.frame.size.width;
+    [UIView animateWithDuration:1.5f animations:^{
+        animationImgView.frame = frame;
+        animationBgView.alpha  = 1.0f;
+    }completion:^(BOOL finished){
+        [animationImgView removeFromSuperview];
+        [animationBgView removeFromSuperview];
+        self.showImageView.hidden = NO;
+        [self.navigationController pushViewController:[[LinBlowUpViewController alloc] initWithImage:self.showImageView.image] animated:NO];
+    }];
 }
 
 #pragma mark - 隐藏状态栏

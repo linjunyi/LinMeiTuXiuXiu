@@ -12,6 +12,7 @@
 
 - (void)grayImage:(UIImage *)image;
 - (void)cutImage:(UIImage *)image;
+- (void)expandImage:(UIImage *)image;
 
 @end
 

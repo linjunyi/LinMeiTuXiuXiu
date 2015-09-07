@@ -6,7 +6,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             scope = "0"
@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinMeiTuXiuXiu/ViewController.m"
-            timestampString = "462271119.399795"
+            timestampString = "463314851.447532"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "284"
-            endingLineNumber = "284"
+            startingLineNumber = "285"
+            endingLineNumber = "285"
             landmarkName = "-grayImage:"
             landmarkType = "5">
          </BreakpointContent>
@@ -36,11 +36,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinMeiTuXiuXiu/LinAnimationViewController.m"
-            timestampString = "462468266.305937"
+            timestampString = "463237090.926174"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
             landmarkName = "-selectItem:"
             landmarkType = "5">
          </BreakpointContent>
@@ -52,28 +52,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinMeiTuXiuXiu/ViewController.m"
-            timestampString = "462271119.399795"
+            timestampString = "463314851.447532"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "283"
-            endingLineNumber = "283"
+            startingLineNumber = "284"
+            endingLineNumber = "284"
             landmarkName = "-grayImage:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LinMeiTuXiuXiu/LinAnimationViewController.m"
-            timestampString = "462468266.305937"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "-selectItem:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -116,11 +100,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinMeiTuXiuXiu/LinAnimationViewController.m"
-            timestampString = "462468266.305937"
+            timestampString = "463237090.926174"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
             landmarkName = "-click:"
             landmarkType = "5">
          </BreakpointContent>
@@ -132,11 +116,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinMeiTuXiuXiu/ViewController.m"
-            timestampString = "462376021.207704"
+            timestampString = "463314851.447532"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "364"
-            endingLineNumber = "364"
+            startingLineNumber = "365"
+            endingLineNumber = "365"
             landmarkName = "-cutImage:"
             landmarkType = "5">
          </BreakpointContent>
@@ -148,11 +132,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinMeiTuXiuXiu/ViewController.m"
-            timestampString = "462376021.207704"
+            timestampString = "463314851.447532"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "364"
-            endingLineNumber = "364"
+            startingLineNumber = "365"
+            endingLineNumber = "365"
             landmarkName = "-cutImage:"
             landmarkType = "5">
          </BreakpointContent>
@@ -164,7 +148,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinMeiTuXiuXiu/ViewController.m"
-            timestampString = "462379778.501924"
+            timestampString = "463314851.447532"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "384"
@@ -180,11 +164,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinMeiTuXiuXiu/ViewController.m"
-            timestampString = "462375882.683575"
+            timestampString = "463314851.447532"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "332"
-            endingLineNumber = "332"
+            startingLineNumber = "333"
+            endingLineNumber = "333"
             landmarkName = "-cutImage:"
             landmarkType = "5">
          </BreakpointContent>
@@ -196,11 +180,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinMeiTuXiuXiu/ViewController.m"
-            timestampString = "462375882.683575"
+            timestampString = "463314851.447532"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "334"
-            endingLineNumber = "334"
+            startingLineNumber = "335"
+            endingLineNumber = "335"
             landmarkName = "-cutImage:"
             landmarkType = "5">
          </BreakpointContent>
@@ -212,11 +196,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinMeiTuXiuXiu/ViewController.m"
-            timestampString = "462376034.004592"
+            timestampString = "463314851.447532"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "363"
-            endingLineNumber = "363"
+            startingLineNumber = "364"
+            endingLineNumber = "364"
             landmarkName = "-cutImage:"
             landmarkType = "5">
          </BreakpointContent>
@@ -228,7 +212,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinMeiTuXiuXiu/ViewController.m"
-            timestampString = "462379778.501924"
+            timestampString = "463314851.447532"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "383"
@@ -244,11 +228,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinMeiTuXiuXiu/LinAnimationViewController.m"
-            timestampString = "462468266.305937"
+            timestampString = "463237090.926174"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
             landmarkName = "-moveAnimation:"
             landmarkType = "5">
          </BreakpointContent>
@@ -260,11 +244,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinMeiTuXiuXiu/LinAnimationViewController.m"
-            timestampString = "462468266.305937"
+            timestampString = "463237090.926174"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
             landmarkName = "-moveAnimation:"
             landmarkType = "5">
          </BreakpointContent>
@@ -276,11 +260,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinMeiTuXiuXiu/LinAnimationViewController.m"
-            timestampString = "462468266.305937"
+            timestampString = "463237090.926174"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
             landmarkName = "-moveAnimation:"
             landmarkType = "5">
          </BreakpointContent>
@@ -292,11 +276,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinMeiTuXiuXiu/LinAnimationViewController.m"
-            timestampString = "462468266.305937"
+            timestampString = "463237090.926174"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
             landmarkName = "-selectItem:"
             landmarkType = "5">
          </BreakpointContent>
@@ -308,11 +292,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinMeiTuXiuXiu/LinAnimationViewController.m"
-            timestampString = "462468266.305937"
+            timestampString = "462794419.677108"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "-selectItem:"
             landmarkType = "5">
          </BreakpointContent>
@@ -324,11 +308,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinMeiTuXiuXiu/LinAnimationViewController.m"
-            timestampString = "462468266.305937"
+            timestampString = "463237090.926174"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
             landmarkName = "-setItemClickEnabled"
             landmarkType = "5">
          </BreakpointContent>
@@ -340,11 +324,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinMeiTuXiuXiu/LinAnimationViewController.m"
-            timestampString = "462468266.305937"
+            timestampString = "463237090.926174"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
             landmarkName = "-scaleAnimation:"
             landmarkType = "5">
          </BreakpointContent>
@@ -356,12 +340,76 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinMeiTuXiuXiu/LinAnimationViewController.m"
-            timestampString = "462468266.305937"
+            timestampString = "463237090.926174"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
             landmarkName = "-scaleAnimation:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LinMeiTuXiuXiu/ViewController.m"
+            timestampString = "463314851.447532"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
+            landmarkName = "-imageViewClicked:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LinMeiTuXiuXiu/LinBlowUpViewController.m"
+            timestampString = "463321996.160511"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "-blowUpImage:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LinMeiTuXiuXiu/LinBlowUpViewController.m"
+            timestampString = "463321996.160511"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "-imageView"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LinMeiTuXiuXiu/LinBlowUpViewController.m"
+            timestampString = "463321996.160511"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "-blowUpImage:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

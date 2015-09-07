@@ -25,6 +25,7 @@
 		3E5CE6AE1B74B0ED0038E0B2 /* 悠哉3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E5CE6AA1B74B0ED0038E0B2 /* 悠哉3.jpg */; };
 		3E5CE6AF1B74B0ED0038E0B2 /* 悠哉4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E5CE6AB1B74B0ED0038E0B2 /* 悠哉4.jpg */; };
 		3E5CE6B21B74B85A0038E0B2 /* LinImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E5CE6B11B74B85A0038E0B2 /* LinImageView.m */; };
+		3EAB2DFD1B9D9FE700CDDAAD /* LinBlowUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EAB2DFC1B9D9FE700CDDAAD /* LinBlowUpViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,8 @@
 		3E5CE6AB1B74B0ED0038E0B2 /* 悠哉4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "悠哉4.jpg"; sourceTree = "<group>"; };
 		3E5CE6B01B74B85A0038E0B2 /* LinImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinImageView.h; sourceTree = "<group>"; };
 		3E5CE6B11B74B85A0038E0B2 /* LinImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinImageView.m; sourceTree = "<group>"; };
+		3EAB2DFB1B9D9FE700CDDAAD /* LinBlowUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinBlowUpViewController.h; sourceTree = "<group>"; };
+		3EAB2DFC1B9D9FE700CDDAAD /* LinBlowUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinBlowUpViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +114,8 @@
 				3E5CE6881B74A9FC0038E0B2 /* ViewController.m */,
 				3E5CE6B01B74B85A0038E0B2 /* LinImageView.h */,
 				3E5CE6B11B74B85A0038E0B2 /* LinImageView.m */,
+				3EAB2DFB1B9D9FE700CDDAAD /* LinBlowUpViewController.h */,
+				3EAB2DFC1B9D9FE700CDDAAD /* LinBlowUpViewController.m */,
 				3E1E06061B78D68600DA5D0E /* LinAnimationViewController.h */,
 				3E1E06071B78D68600DA5D0E /* LinAnimationViewController.m */,
 				3E5CE68A1B74A9FC0038E0B2 /* Main.storyboard */,
@@ -282,6 +287,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E5CE6861B74A9FC0038E0B2 /* LinMeiTuXiuXiu.xcdatamodeld in Sources */,
+				3EAB2DFD1B9D9FE700CDDAAD /* LinBlowUpViewController.m in Sources */,
 				3E1E06081B78D68600DA5D0E /* LinAnimationViewController.m in Sources */,
 				3E5CE6B21B74B85A0038E0B2 /* LinImageView.m in Sources */,
 				3E5CE6831B74A9FC0038E0B2 /* AppDelegate.m in Sources */,

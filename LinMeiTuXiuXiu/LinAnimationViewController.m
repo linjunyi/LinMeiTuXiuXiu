@@ -53,6 +53,19 @@
 
 - (void)selectItem:(LinAnimationItem *)item {
     if (item.tag == _currentIndex) {
+        if ([item.titleLabel.text isEqualToString:@"灰化图"]) {
+            if ([self.delegate respondsToSelector:@selector(grayImage:)]) {
+                [self.delegate grayImage:nil];
+            }
+        }else if([item.titleLabel.text isEqualToString:@"图像切割"]) {
+            if([self.delegate respondsToSelector:@selector(cutImage:)]) {
+                [self.delegate cutImage:nil];
+            }
+        }else if([item.titleLabel.text isEqualToString:@"放大镜"]) {
+            if([self.delegate respondsToSelector:@selector(expandImage:)]) {
+                [self.delegate expandImage:nil];
+            }
+        }
         return;
     }
     NSInteger tmpIndex = item.tag > _currentIndex ? _currentIndex + 5 : _currentIndex;
@@ -67,16 +80,6 @@
     NSTimer *timer = [NSTimer timerWithTimeInterval:duration target:self selector:@selector(setItemClickEnabled) userInfo:nil repeats:NO];
     [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
     _currentIndex = item.tag;
-    /*
-    if ([item.titleLabel.text isEqualToString:@"灰化图"]) {
-        if ([self.delegate respondsToSelector:@selector(grayImage:)]) {
-            [self.delegate grayImage:nil];
-        }
-    }else if([item.titleLabel.text isEqualToString:@"图像切割"]) {
-        if([self.delegate respondsToSelector:@selector(cutImage:)]) {
-            [self.delegate cutImage:nil];
-        }
-    }*/
 }
 
 - (void)setItemClickEnabled {
